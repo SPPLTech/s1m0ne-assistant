@@ -1,7 +1,6 @@
-# livekit_auth.py
-import os
-import jwt  # PyJWT
 import datetime
+import os
+import jwt
 
 def generate_livekit_token(identity: str = "user", ttl_seconds: int = 3600):
     api_key = os.getenv("LIVEKIT_API_KEY")
@@ -27,7 +26,3 @@ def generate_livekit_token(identity: str = "user", ttl_seconds: int = 3600):
 
     token = jwt.encode(payload, api_secret, algorithm="HS256")
     return token
-
-if __name__ == "__main__":
-    token = generate_livekit_token("s1m0ne-user")
-    print("LiveKit Token:\n", token)
